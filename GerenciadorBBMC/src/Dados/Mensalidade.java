@@ -22,7 +22,7 @@ public class Mensalidade extends Pagamento{
     }
     
     public int getAno(){
-        return ano*pagamento;
+        return ano;
     }
     
     public void setAno(int param){
