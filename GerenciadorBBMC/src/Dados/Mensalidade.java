@@ -10,18 +10,8 @@ package Dados;
  * @author d119322
  */
 public class Mensalidade {
-    private Jogador jogador;
     private String mes;
     private int ano;
-    private char pago;
-    
-    public Jogador getJogador(){
-        return jogador;
-    }
-    
-    public void setJogador(Jogador param){
-        jogador = param;
-    }
     
     public String getMes(){
         return mes;
@@ -37,13 +27,5 @@ public class Mensalidade {
     
     public void setAno(int param){
         ano = param;
-    }
-    
-    public char getPago(){
-        return pago;
-    }
-    
-    public void setJogador(char param){
-        pago = param;
     }
 }
