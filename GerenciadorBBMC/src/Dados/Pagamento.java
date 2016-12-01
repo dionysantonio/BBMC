@@ -10,9 +10,8 @@ package Dados;
  * @author d119322
  */
 public class Pagamento {
-    private Jogador jogador;
-    
-    private int pagamento;
+    protected Jogador jogador;
+    protected int pagamento;
     
     public Jogador getJogador(){
         return jogador;

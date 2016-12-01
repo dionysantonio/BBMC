@@ -11,18 +11,9 @@ import java.util.Date;
  *
  * @author d119322
  */
-public class Avulso {
-    private Jogador jogador;
+public class Avulso extends Pagamento{
     private Date data;
-    
-    public Jogador getJogador(){
-        return jogador;
-    }
-    
-    public void setJogador(Jogador param){
-        jogador = param;
-    }
-    
+       
      public Date getData(){
         return data;
     }
