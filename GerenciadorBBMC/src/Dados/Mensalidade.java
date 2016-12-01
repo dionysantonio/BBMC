@@ -9,7 +9,7 @@ package Dados;
  *
  * @author d119322
  */
-public class Mensalidade {
+public class Mensalidade extends Pagamento{
     private String mes;
     private int ano;
     
