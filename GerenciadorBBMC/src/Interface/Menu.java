@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Interface;
-
+import Controle.IOSQL;
 /**
  *
  * @author d119322
@@ -82,6 +82,11 @@ public class Menu extends javax.swing.JFrame {
         jMenuPrincipal.add(jMenuJogador);
 
         jMenuEditar.setText("Edit");
+        jMenuEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuEditarMouseClicked(evt);
+            }
+        });
         jMenuPrincipal.add(jMenuEditar);
 
         jMenuRelatorios.setText("Relatorios");
@@ -105,6 +110,7 @@ public class Menu extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastroActionPerformed
@@ -118,6 +124,14 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
                 
     }//GEN-LAST:event_jMenuCadastroMouseClicked
+
+    private void jMenuEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuEditarMouseClicked
+        // TODO add your handling code here:
+        IOSQL teste = new IOSQL();
+        
+        teste.Conexao();
+        
+    }//GEN-LAST:event_jMenuEditarMouseClicked
 
     /**
      * @param args the command line arguments
