@@ -34,7 +34,7 @@ public class Jogador {
         return mensalista;
     }
     
-    public void setMensalista(){
-        
+    public void setMensalista(char param){
+        mensalista = param;
     }
 }
