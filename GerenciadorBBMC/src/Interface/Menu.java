@@ -32,8 +32,12 @@ public class Menu extends javax.swing.JFrame {
         jMenuItemSair = new javax.swing.JMenuItem();
         jMenuJogador = new javax.swing.JMenu();
         jMenuCadastro = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuPagamento = new javax.swing.JMenu();
+        jMenuAvulso = new javax.swing.JMenuItem();
+        jMenuMensalidade = new javax.swing.JMenuItem();
         jMenuEditar = new javax.swing.JMenu();
+        jMenuRelatorios = new javax.swing.JMenu();
+        jMenuBalancoMensal = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Gerenciador BBMC");
@@ -52,6 +56,11 @@ public class Menu extends javax.swing.JFrame {
 
         jMenuCadastro.setText("Cadastro");
         jMenuCadastro.setToolTipText("");
+        jMenuCadastro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuCadastroMouseClicked(evt);
+            }
+        });
         jMenuCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuCadastroActionPerformed(evt);
@@ -59,13 +68,28 @@ public class Menu extends javax.swing.JFrame {
         });
         jMenuJogador.add(jMenuCadastro);
 
-        jMenuItem1.setText("Mensalidade");
-        jMenuJogador.add(jMenuItem1);
+        jMenuPagamento.setText("Pagamento");
+        jMenuPagamento.setToolTipText("");
+
+        jMenuAvulso.setText("Avulso");
+        jMenuPagamento.add(jMenuAvulso);
+
+        jMenuMensalidade.setText("Mensalidade");
+        jMenuPagamento.add(jMenuMensalidade);
+
+        jMenuJogador.add(jMenuPagamento);
 
         jMenuPrincipal.add(jMenuJogador);
 
         jMenuEditar.setText("Edit");
         jMenuPrincipal.add(jMenuEditar);
+
+        jMenuRelatorios.setText("Relatorios");
+
+        jMenuBalancoMensal.setText("Balanço Mensal");
+        jMenuRelatorios.add(jMenuBalancoMensal);
+
+        jMenuPrincipal.add(jMenuRelatorios);
 
         setJMenuBar(jMenuPrincipal);
 
@@ -85,7 +109,15 @@ public class Menu extends javax.swing.JFrame {
 
     private void jMenuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuCadastroActionPerformed
         // TODO add your handling code here:
+        TelaCadastro cadastro = new TelaCadastro();
+        cadastro.setVisible(true);
+        
     }//GEN-LAST:event_jMenuCadastroActionPerformed
+
+    private void jMenuCadastroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuCadastroMouseClicked
+        // TODO add your handling code here:
+                
+    }//GEN-LAST:event_jMenuCadastroMouseClicked
 
     /**
      * @param args the command line arguments
@@ -124,11 +156,15 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenuArquivo;
+    private javax.swing.JMenuItem jMenuAvulso;
+    private javax.swing.JMenuItem jMenuBalancoMensal;
     private javax.swing.JMenuItem jMenuCadastro;
     private javax.swing.JMenu jMenuEditar;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenu jMenuJogador;
+    private javax.swing.JMenuItem jMenuMensalidade;
+    private javax.swing.JMenu jMenuPagamento;
     private javax.swing.JMenuBar jMenuPrincipal;
+    private javax.swing.JMenu jMenuRelatorios;
     // End of variables declaration//GEN-END:variables
 }
