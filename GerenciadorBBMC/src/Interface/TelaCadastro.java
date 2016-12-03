@@ -5,6 +5,9 @@
  */
 package Interface;
 
+import Controle.IODado;
+import Controle.IOIndice;
+
 /**
  *
  * @author Administrador
@@ -35,6 +38,7 @@ public class TelaCadastro extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jListJogadorMens = new javax.swing.JList<>();
         jButtonCadastroJogador = new javax.swing.JButton();
+        jLabelJogador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro");
@@ -55,35 +59,47 @@ public class TelaCadastro extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jListJogadorMens);
 
         jButtonCadastroJogador.setText("Efetuar Cadastro");
+        jButtonCadastroJogador.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonCadastroJogadorMouseClicked(evt);
+            }
+        });
+
+        jLabelJogador.setText("Aguardando");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(23, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabelNomeJogador)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextNomeJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabelIdadeJogador)
-                                .addGap(18, 18, 18))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabelIMensalistaJogador)
-                                .addGap(38, 38, 38)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextNomeJogador1)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE))
-                        .addGap(178, 178, 178)))
-                .addGap(66, 66, 66))
             .addGroup(layout.createSequentialGroup()
                 .addGap(160, 160, 160)
                 .addComponent(jButtonCadastroJogador)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabelNomeJogador)
+                                .addGap(18, 18, 18)
+                                .addComponent(jTextNomeJogador, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabelIdadeJogador)
+                                        .addGap(18, 18, 18))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(jLabelIMensalistaJogador)
+                                        .addGap(38, 38, 38)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextNomeJogador1)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE))
+                                .addGap(178, 178, 178)))
+                        .addGap(66, 66, 66))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabelJogador)
+                        .addGap(182, 182, 182))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -100,7 +116,9 @@ public class TelaCadastro extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelIMensalistaJogador)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addGap(18, 18, 18)
+                .addComponent(jLabelJogador)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButtonCadastroJogador)
                 .addContainerGap(59, Short.MAX_VALUE))
         );
@@ -108,6 +126,26 @@ public class TelaCadastro extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCadastroJogadorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCadastroJogadorMouseClicked
+        // TODO add your handling code here:
+                IODado arquivo = new IODado("src\\dados.txt");
+        
+        
+        //Escrita nos indices
+        IOIndice indiceRA = new IOIndice("src\\indiceRA.txt");
+        indiceRA.escreverIndP(jTextNomeJogador.getText()+'|'+arquivo.getTam());
+
+        //Escrita no Arquivo
+        arquivo.escrever(jTextNomeJogador.getText()+";"+jTextNomeJogador1.getText()+";"+(jListJogadorMens.getSelectedIndex()==0 ? 'S' : 'N')+"\r\n");
+        
+        jTextNomeJogador.setText("");
+        jTextNomeJogador1.setText("");
+        jLabelJogador.setText("Cadastrado!");
+        
+        arquivo.finalizar();
+        indiceRA.finalizar();
+    }//GEN-LAST:event_jButtonCadastroJogadorMouseClicked
 
     /**
      * @param args the command line arguments
@@ -148,6 +186,7 @@ public class TelaCadastro extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCadastroJogador;
     private javax.swing.JLabel jLabelIMensalistaJogador;
     private javax.swing.JLabel jLabelIdadeJogador;
+    private javax.swing.JLabel jLabelJogador;
     private javax.swing.JLabel jLabelNomeJogador;
     private javax.swing.JList<String> jListJogadorMens;
     private javax.swing.JScrollPane jScrollPane1;
